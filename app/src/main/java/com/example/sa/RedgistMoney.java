@@ -1,9 +1,7 @@
 package com.example.sa;
 
 
-import android.annotation.SuppressLint;
 import android.content.DialogInterface;
-import android.content.Intent;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -15,25 +13,14 @@ import android.widget.TextView;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.sa.Bridge.ChangeFont;
-import com.example.sa.Bridge.opensansvariablefontwdthwght;
-import com.example.sa.ChainOfResponsibility.Numbers;
-import com.example.sa.ChainOfResponsibility.httpNum;
-import com.example.sa.ChainOfResponsibility.http_is_Client_Error;
-import com.example.sa.ChainOfResponsibility.http_is_Informational;
-import com.example.sa.ChainOfResponsibility.http_is_Redirection;
-import com.example.sa.ChainOfResponsibility.http_is_Server_Error;
-import com.example.sa.ChainOfResponsibility.http_is_Successful;
-import com.example.sa.ChainOfResponsibility.loginError;
 import com.example.sa.Proxy.WalletProxy;
 import com.example.sa.Proxy.WalletService;
 import com.example.sa.Visitor.Switch;
 import com.example.sa.command.Command;
 import com.example.sa.command.Concrete_Commands;
-import com.example.sa.command.receiver;
+import com.example.sa.command.Money;
 import com.example.sa.store.UserStore;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -57,7 +44,7 @@ public class RedgistMoney extends AppCompatActivity {
     WalletService walletProxy= new WalletProxy();
 
     private Command command;
-    private com.example.sa.command.receiver receiver;
+    private Money Money;
     JSONObject raw = null;
 //    private  receiver;
 
@@ -150,8 +137,8 @@ public class RedgistMoney extends AppCompatActivity {
 
     public void btngomoney(View view) {
         if (inputmoney != null) {
-            receiver = new receiver(Integer.parseInt(inputmoney.getText().toString()), Double.parseDouble(setTextView.get("balance")));
-            command = new Concrete_Commands(receiver);
+            Money = new Money(Integer.parseInt(inputmoney.getText().toString()), Double.parseDouble(setTextView.get("balance")));
+            command = new Concrete_Commands(Money);
             AlertDialog.Builder alertDialog = new AlertDialog.Builder(RedgistMoney.this);
             alertDialog.setView(R.layout.activity_bank_change_money);
             AlertDialog alertDialog1 = alertDialog.create();

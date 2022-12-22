@@ -4,20 +4,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class invorker {
-    private List<Command> commandList = new ArrayList<Command>();
-    private List<Command> commandList1 = new ArrayList<Command>();
+    private List<Command> doCommandList = new ArrayList<Command>();
+    private List<Command> undoCommandList = new ArrayList<Command>();
 
     public void addCommend(Command Command) {
-        commandList.add(Command);
+        doCommandList.add(Command);
     }
 
     public void execute() {
-        for(Command command : commandList) {
+        for(Command command : doCommandList) {
             command.execute();
         }
     }
     public void unexecute() {
-        for (Command command : commandList1) {
+        for (Command command : undoCommandList) {
             command.unexecute();
         }
     }
